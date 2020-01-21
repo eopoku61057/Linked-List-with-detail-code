@@ -108,7 +108,33 @@ void DLL<T>::append(T &data)
 template<class T>
 bool DLL<T>::removeFront()
 {
-    return false;
+    // create a pointer
+    Node<T> *itr;
+
+    // check to see if the list is empty
+    if (head == NULL)
+    {
+        return false;
+    }
+    else
+    {
+        itr = head;
+        head = head->get_next();
+
+        // check to see if head is NULL, then set tail to NULL
+        if (head == NULL)
+        {
+            tail = NULL;
+        }
+        else
+        {
+            head->set_prev(NULL);
+        }
+        
+        delete(itr);
+        return true;
+    }
+    
 }
 
 template<class T>
