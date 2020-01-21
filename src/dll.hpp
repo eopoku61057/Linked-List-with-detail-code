@@ -146,11 +146,28 @@ bool DLL<T>::remove(T target)
 template<class T>
 T DLL<T>::getFront(void)
 {
-    return 0;
+    // check if list is empty then return zero, otherwise return head(data)
+    if (head == NULL)
+    {
+        return 0;
+    }
+    else 
+    {
+        return head->get_data();
+    }
 }
 
 template<class T>
 T DLL<T>::getBack(void)
 {
-    return 0;
+    // check if list is empty then return zero, otherwise return tail(data)
+    if (tail == NULL)
+    {
+        return 0;
+    }
+    else 
+    {
+        return tail->get_data();
+    }
+    
 }
