@@ -140,7 +140,34 @@ bool DLL<T>::removeFront()
 template<class T>
 bool DLL<T>::removeBack()
 {
-    return false;
+    // create a node pointer to temporary hold what is going to be removed
+    Node<T> *itr;
+
+    // check if list is empty, then return false otherwise continue to remove from back
+    if (head == NULL)
+    {
+        return false;
+    }
+    else
+    {
+        itr = tail;
+        tail = tail->get_prev();
+        delete(itr);
+
+        //check to see if the last thing was remove, then set head to NULL
+        if (tail == NULL)
+        {
+            head = NULL;
+            return true;
+        }
+        else 
+        {
+            tail->set_next(NULL);
+            return true;
+        }
+    }
+    
+
 }
 
 template<class T>
