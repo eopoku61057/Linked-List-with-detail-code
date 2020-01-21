@@ -14,11 +14,11 @@ public:
     // desc: Inializes a new, empty list
 	DLL();
 
-    // desc:  Adds new data to the end of the list
+    // desc:  Adds new data to the begining of the list
     // param: data The data to add to the list
 	void prepend(T &data);
 
-    // desc:  Adds new data to the front of the list
+    // desc:  Adds new data to the end of the list
     // param: data The data to add to the list
 	void append(T &data);   
 
@@ -66,6 +66,21 @@ DLL<T>::DLL()
 template<class T>
 void DLL<T>::prepend(T &data)
 {
+    // create a new node
+    Node<T> *new_node = new Node<T>(data);
+
+    // check to see if head is null, point head and tail to the new node
+    if (head == NULL)
+    {
+        head = new_node;
+        tail = new_node;
+    }
+    else // otherwise the list is not empty so we tied them together
+    {
+        new_node->set_next(head);
+        head = new_node;
+    }
+
     return;
 }
 
