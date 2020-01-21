@@ -193,6 +193,58 @@ void DLL<T>::print()
 template<class T>
 bool DLL<T>::remove(T target)
 {
+    // create two node pointers (itr and toDelete)
+    Node<T> *itr;
+    Node<T> *toDelete;
+
+    // check to see if data is empty
+    if (head == NULL)
+    {
+        return false;
+    }
+
+    // if the list isn't empty, we will do some walkings and find what needs to be deleted
+    itr = head;
+    while (itr != NULL)
+    {
+        // check to see if the data contains what we are trying to delete
+        if (itr->get_data == target)
+        {
+            break;
+        }
+        itr = itr->get_next();
+    }
+
+    //check to see (itr == NULL) we didn't find the data, return false
+    if (itr == NULL)
+    {
+        return false;
+    }
+
+    if (itr == head)
+    {
+        // remove the first node
+        return removeFront();
+    }
+    else if (itr == tail)
+    {
+        // remove the last node
+        return removeBack();
+    }
+    else
+    {
+        /* remove from the middle of the list */
+        toDelete = itr;
+        itr = itr->get_prev();
+        itr->set_next(toDelete->get_next());
+        itr = toDelete->get_next();
+        itr->set_prev(toDelete->get_prev());
+        delete(toDelete);
+
+        return true;
+    }
+    
+
     return false;
 }
 
