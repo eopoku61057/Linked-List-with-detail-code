@@ -173,7 +173,20 @@ bool DLL<T>::removeBack()
 template<class T>
 Node<T> *DLL<T>::search(T target)
 {
-    return NULL;
+    Node<T> *itr;
+
+    // if the list isn't empty, we will do some walkings and find what needs to be deleted
+    itr = head;
+    while (itr != NULL)
+    {
+        // check to see if the data contains what we are trying to delete
+        if (itr->get_data == target)
+        {
+            break;
+        }
+        itr = itr->get_next();
+    }
+    return itr;
 }
 
 template<class T>
