@@ -132,9 +132,9 @@ bool DLL<T>::removeFront()
         }
         
         delete(itr);
-        return true;
     }
     
+    return true;
 }
 
 template<class T>
